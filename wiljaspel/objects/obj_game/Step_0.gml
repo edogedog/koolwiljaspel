@@ -1,80 +1,116 @@
 var mx = mouse_x;
 var my = mouse_y;
 
+var W = room_width;
+var H = room_height;
+
 if (mouse_check_button_pressed(mb_left))
 {
     if (game_state == "menu")
     {
-        // START button
-        if (mx > 200 && mx < 400 && my > 180 && my < 230)
+        // START
+        if (mx > W/2 - 160 && mx < W/2 + 160 && my > H/2 - 40 && my < H/2 + 50)
         {
             game_state = "game";
+            if (global.sound) alexa_playsfx(snd_bling1);
+        }
+
+        // FULLSCREEN CHECKBOX
+        if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 100 && my < H/2 + 130)
+        {
+            global.fullscreen = !global.fullscreen;
+            window_set_fullscreen(global.fullscreen);
+        }
+
+        // MUSIC CHECKBOX
+        if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 140 && my < H/2 + 170)
+        {
+            global.music = !global.music;
+
+            if (global.music)
+            {
+                audio_play_sound(msc_music1, 1, true);
+            }
+            else
+            {
+                audio_stop_sound(msc_music1);
+            }
+        }
+
+        // SOUND CHECKBOX
+        if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 180 && my < H/2 + 210)
+        {
+            global.sound = !global.sound;
         }
     }
 
     else if (game_state == "game")
     {
-        // TOP
-        if (mx > 50 && mx < 300 && my > 100 && my < 140)
+        if (mx > W * 0.42 && mx < W * 0.90)
         {
-            top_choice += 1;
-            alexa_playsfx(snd_bling3);
+            if (my > H * 0.18 && my < H * 0.27)
+            {
+                top_choice = floor((mx - W * 0.42) / ((W * 0.48) / 4));
+                if (global.sound) alexa_playsfx(snd_bling3);
+            }
+
+            if (my > H * 0.32 && my < H * 0.41)
+            {
+                bottom_choice = floor((mx - W * 0.42) / ((W * 0.48) / 4));
+                if (global.sound) alexa_playsfx(snd_bling3);
+            }
+
+            if (my > H * 0.46 && my < H * 0.55)
+            {
+                hat_choice = floor((mx - W * 0.42) / ((W * 0.48) / 4));
+                if (global.sound) alexa_playsfx(snd_bling3);
+            }
+
+            if (my > H * 0.60 && my < H * 0.69)
+            {
+                accessory_choice = floor((mx - W * 0.42) / ((W * 0.48) / 4));
+                if (global.sound) alexa_playsfx(snd_bling3);
+            }
+
+            if (my > H * 0.74 && my < H * 0.83)
+            {
+                shoes_choice = floor((mx - W * 0.42) / ((W * 0.48) / 4));
+                if (global.sound) alexa_playsfx(snd_bling3);
+            }
         }
 
-        // BOTTOM
-        if (mx > 50 && mx < 300 && my > 150 && my < 190)
-        {
-            bottom_choice += 1;
-            alexa_playsfx(snd_bling3);
-        }
-
-        // HAT
-        if (mx > 50 && mx < 300 && my > 200 && my < 240)
-        {
-            hat_choice += 1;
-            alexa_playsfx(snd_bling3);
-        }
-
-        // ACCESSORY
-        if (mx > 50 && mx < 300 && my > 250 && my < 290)
-        {
-            accessory_choice += 1;
-            alexa_playsfx(snd_bling3);
-        }
-
-        // SHOES
-        if (mx > 50 && mx < 300 && my > 300 && my < 340)
-        {
-            shoes_choice += 1;
-            alexa_playsfx(snd_bling3);
-        }
+        top_choice = clamp(top_choice, 0, 3);
+        bottom_choice = clamp(bottom_choice, 0, 3);
+        hat_choice = clamp(hat_choice, 0, 3);
+        accessory_choice = clamp(accessory_choice, 0, 3);
+        shoes_choice = clamp(shoes_choice, 0, 3);
 
         // SCORE
-        if (mx > 400 && mx < 550 && my > 150 && my < 200)
+        if (mx > W * 0.42 && mx < W * 0.58 && my > H * 0.90 && my < H * 0.97)
         {
             points = 0;
 
-            if (item_themes[top_choice] == theme) points += 1;
-            if (item_themes[bottom_choice] == theme) points += 1;
-            if (item_themes[hat_choice] == theme) points += 1;
-            if (item_themes[accessory_choice] == theme) points += 1;
-            if (item_themes[shoes_choice] == theme) points += 1;
+            if (tops_theme[top_choice] == theme) points += 1;
+            if (bottoms_theme[bottom_choice] == theme) points += 1;
+            if (hats_theme[hat_choice] == theme) points += 1;
+            if (accessories_theme[accessory_choice] == theme) points += 1;
+            if (shoes_theme[shoes_choice] == theme) points += 1;
 
-            alexa_playsfx(snd_bling1);
+            if (global.sound) alexa_playsfx(snd_bling1);
         }
 
         // NEW PROMPT
-        if (mx > 400 && mx < 550 && my > 220 && my < 270)
+        if (mx > W * 0.62 && mx < W * 0.82 && my > H * 0.90 && my < H * 0.97)
         {
             theme = item_themes[irandom(3)];
             points = 0;
-            alexa_playsfx(snd_bling2);
+            if (global.sound) alexa_playsfx(snd_bling2);
+        }
+
+        // BACK TO MENU
+        if (mx > 20 && mx < 120 && my > 20 && my < 60)
+        {
+            game_state = "menu";
         }
     }
 }
-
-if (top_choice > 3) top_choice = 0;
-if (bottom_choice > 3) bottom_choice = 0;
-if (hat_choice > 3) hat_choice = 0;
-if (accessory_choice > 3) accessory_choice = 0;
-if (shoes_choice > 3) shoes_choice = 0;
