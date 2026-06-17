@@ -1,21 +1,24 @@
 /// @description Insert description here
 // You can write your code in this editor
-prompts = ["Party", "Dinner", "Beach", "School"];
-theme = prompts[irandom(3)];
+game_state = "menu";
+// Prompts
+theme = "PARTY";
 
-top = "T-Shirt";
-top_theme = "School";
+// Clothes lists
+tops = ["sparkly top", "blouse", "bikini top", "t-shirt"];
+bottoms = ["skirt", "long skirt", "sarrong", "jeans"];
+hats = ["diadem", "earrings", "flower", "glasses"];
+accessories = ["red solo cup", "clutch", "little beach bag", "book"];
+shoes_list = ["heels", "mary jane", "flipflops", "sneakers"];
 
-bottom = "Jeans";
-bottom_theme = "School";
+// Themes for each clothing item
+item_themes = ["PARTY", "DINNER", "BEACH", "SCHOOL"];
 
-head = "Hat";
-head_theme = "Beach";
-
-accessory = "Necklace";
-accessory_theme = "Dinner";
-
-shoes = "Sneakers";
-shoes_theme = "School";
+// Which clothing is selected
+top_choice = 0;
+bottom_choice = 0;
+hat_choice = 0;
+accessory_choice = 0;
+shoes_choice = 0;
 
 points = 0;

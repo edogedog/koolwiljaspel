@@ -1,84 +1,36 @@
-/// @description Insert description here
-// You can write your code in this editor
-if (keyboard_check_pressed(ord("1")))
+if (game_state == "menu")
 {
-    if (top == "T-Shirt")
+    if (keyboard_check_pressed(vk_enter))
     {
-        top = "Sparkly Top";
-        top_theme = "Party";
-    }
-    else
-    {
-        top = "T-Shirt";
-        top_theme = "School";
+        game_state = "game";
     }
 }
-
-if (keyboard_check_pressed(ord("2")))
+else if (game_state == "game")
 {
-    if (bottom == "Jeans")
-    {
-        bottom = "Fancy Skirt";
-        bottom_theme = "Dinner";
-    }
-    else
-    {
-        bottom = "Jeans";
-        bottom_theme = "School";
-    }
+    // put ALL your clothing + scoring code inside here
 }
+// Change clothes
+if (keyboard_check_pressed(ord("1"))) top_choice += 1;
+if (keyboard_check_pressed(ord("2"))) bottom_choice += 1;
+if (keyboard_check_pressed(ord("3"))) hat_choice += 1;
+if (keyboard_check_pressed(ord("4"))) accessory_choice += 1;
+if (keyboard_check_pressed(ord("5"))) shoes_choice += 1;
 
-if (keyboard_check_pressed(ord("3")))
-{
-    if (head == "Hat")
-    {
-        head = "Tiara";
-        head_theme = "Party";
-    }
-    else
-    {
-        head = "Hat";
-        head_theme = "Beach";
-    }
-}
+// Loop back to start
+if (top_choice > 3) top_choice = 0;
+if (bottom_choice > 3) bottom_choice = 0;
+if (hat_choice > 3) hat_choice = 0;
+if (accessory_choice > 3) accessory_choice = 0;
+if (shoes_choice > 3) shoes_choice = 0;
 
-if (keyboard_check_pressed(ord("4")))
-{
-    if (accessory == "Necklace")
-    {
-        accessory = "Glow Bracelet";
-        accessory_theme = "Party";
-    }
-    else
-    {
-        accessory = "Necklace";
-        accessory_theme = "Dinner";
-    }
-}
-
-if (keyboard_check_pressed(ord("5")))
-{
-    if (shoes == "Sneakers")
-    {
-        shoes = "Heels";
-        shoes_theme = "Dinner";
-    }
-    else
-    {
-        shoes = "Sneakers";
-        shoes_theme = "School";
-    }
-}
-
-
-// här e pointsen
+// Score outfit
 if (keyboard_check_pressed(vk_enter))
 {
     points = 0;
 
-    if (top_theme == theme) points += 1;
-    if (bottom_theme == theme) points += 1;
-    if (head_theme == theme) points += 1;
-    if (accessory_theme == theme) points += 1;
-    if (shoes_theme == theme) points += 1;
+    if (item_themes[top_choice] == theme) points += 1;
+    if (item_themes[bottom_choice] == theme) points += 1;
+    if (item_themes[hat_choice] == theme) points += 1;
+    if (item_themes[accessory_choice] == theme) points += 1;
+    if (item_themes[shoes_choice] == theme) points += 1;
 }
