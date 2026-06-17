@@ -8,21 +8,18 @@ if (mouse_check_button_pressed(mb_left))
 {
     if (game_state == "menu")
     {
-        // START
         if (mx > W/2 - 160 && mx < W/2 + 160 && my > H/2 - 40 && my < H/2 + 50)
         {
             game_state = "game";
             if (global.sound) alexa_playsfx(snd_bling1);
         }
 
-        // FULLSCREEN CHECKBOX
         if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 100 && my < H/2 + 130)
         {
             global.fullscreen = !global.fullscreen;
             window_set_fullscreen(global.fullscreen);
         }
 
-        // MUSIC CHECKBOX
         if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 140 && my < H/2 + 170)
         {
             global.music = !global.music;
@@ -37,7 +34,6 @@ if (mouse_check_button_pressed(mb_left))
             }
         }
 
-        // SOUND CHECKBOX
         if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 180 && my < H/2 + 210)
         {
             global.sound = !global.sound;
@@ -79,35 +75,45 @@ if (mouse_check_button_pressed(mb_left))
             }
         }
 
-        top_choice = clamp(top_choice, 0, 3);
-        bottom_choice = clamp(bottom_choice, 0, 3);
-        hat_choice = clamp(hat_choice, 0, 3);
-        accessory_choice = clamp(accessory_choice, 0, 3);
-        shoes_choice = clamp(shoes_choice, 0, 3);
+        top_choice = clamp(top_choice, -1, 3);
+        bottom_choice = clamp(bottom_choice, -1, 3);
+        hat_choice = clamp(hat_choice, -1, 3);
+        accessory_choice = clamp(accessory_choice, -1, 3);
+        shoes_choice = clamp(shoes_choice, -1, 3);
 
-        // SCORE
+        // SCORE only works if a prompt exists
         if (mx > W * 0.42 && mx < W * 0.58 && my > H * 0.90 && my < H * 0.97)
         {
             points = 0;
 
-            if (tops_theme[top_choice] == theme) points += 1;
-            if (bottoms_theme[bottom_choice] == theme) points += 1;
-            if (hats_theme[hat_choice] == theme) points += 1;
-            if (accessories_theme[accessory_choice] == theme) points += 1;
-            if (shoes_theme[shoes_choice] == theme) points += 1;
+            if (theme != "")
+            {
+                if (top_choice != -1 && tops_theme[top_choice] == theme) points += 1;
+                if (bottom_choice != -1 && bottoms_theme[bottom_choice] == theme) points += 1;
+                if (hat_choice != -1 && hats_theme[hat_choice] == theme) points += 1;
+                if (accessory_choice != -1 && accessories_theme[accessory_choice] == theme) points += 1;
+                if (shoes_choice != -1 && shoes_theme[shoes_choice] == theme) points += 1;
+            }
 
             if (global.sound) alexa_playsfx(snd_bling1);
         }
 
-        // NEW PROMPT
+        // NEW PROMPT also resets outfit to naked
         if (mx > W * 0.62 && mx < W * 0.82 && my > H * 0.90 && my < H * 0.97)
         {
             theme = item_themes[irandom(3)];
+
+            top_choice = -1;
+            bottom_choice = -1;
+            hat_choice = -1;
+            accessory_choice = -1;
+            shoes_choice = -1;
+
             points = 0;
+
             if (global.sound) alexa_playsfx(snd_bling2);
         }
 
-        // BACK TO MENU
         if (mx > 20 && mx < 120 && my > 20 && my < 60)
         {
             game_state = "menu";

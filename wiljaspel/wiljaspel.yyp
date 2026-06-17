@@ -42,6 +42,8 @@
     {"id":{"name":"snd_bling1","path":"sounds/snd_bling1/snd_bling1.yy",},},
     {"id":{"name":"snd_bling2","path":"sounds/snd_bling2/snd_bling2.yy",},},
     {"id":{"name":"snd_bling3","path":"sounds/snd_bling3/snd_bling3.yy",},},
+    {"id":{"name":"MIKUBACKUP","path":"sprites/MIKUBACKUP/MIKUBACKUP.yy",},},
+    {"id":{"name":"spr_model","path":"sprites/spr_model/spr_model.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

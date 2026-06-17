@@ -6,10 +6,8 @@ var pink = make_color_rgb(245, 150, 185);
 var hotpink = make_color_rgb(230, 90, 160);
 var purple = make_color_rgb(145, 95, 245);
 var dark = make_color_rgb(90, 35, 85);
-var shelf = make_color_rgb(125, 65, 40);
 var shelf2 = make_color_rgb(95, 45, 30);
 var label = make_color_rgb(240, 145, 125);
-var skin = make_color_rgb(190, 120, 80);
 var white = c_white;
 var black = c_black;
 var grey = c_silver;
@@ -66,29 +64,48 @@ else
     draw_set_color(white);
     draw_text(30, 25, "< MENU");
     draw_text(W * 0.05, H * 0.08, "MODEL");
-    draw_text(W * 0.05, H * 0.13, "Prompt: " + theme);
 
+    if (theme == "")
+        draw_text(W * 0.05, H * 0.13, "Click NEW PROMPT");
+    else
+        draw_text(W * 0.05, H * 0.13, "Prompt: " + theme);
+
+    // YOUR MODEL
     var cx = W * 0.15;
-    var cy = H * 0.36;
+    var cy = H * 0.60;
 
-    draw_set_color(skin);
-    draw_circle(cx, cy - 90, 28, false);
-    draw_rectangle(cx - 22, cy - 60, cx + 22, cy + 70, false);
-    draw_line(cx - 22, cy - 20, cx - 70, cy + 40);
-    draw_line(cx + 22, cy - 20, cx + 70, cy + 40);
-    draw_line(cx - 18, cy + 70, cx - 50, cy + 190);
-    draw_line(cx + 18, cy + 70, cx + 50, cy + 190);
+    draw_sprite(spr_model, 0, cx, cy);
 
     draw_set_color(white);
     draw_text(W * 0.05, H * 0.72, "SCORE");
     draw_text(W * 0.05, H * 0.76, string(points) + " / 5");
 
     draw_text(W * 0.05, H * 0.82, "OUTFIT");
-    draw_text(W * 0.05, H * 0.86, tops[top_choice]);
-    draw_text(W * 0.05, H * 0.89, bottoms[bottom_choice]);
-    draw_text(W * 0.05, H * 0.92, hats[hat_choice]);
-    draw_text(W * 0.05, H * 0.95, accessories[accessory_choice]);
-    draw_text(W * 0.05, H * 0.98, shoes_list[shoes_choice]);
+
+    if (top_choice == -1)
+        draw_text(W * 0.05, H * 0.86, "no top");
+    else
+        draw_text(W * 0.05, H * 0.86, tops[top_choice]);
+
+    if (bottom_choice == -1)
+        draw_text(W * 0.05, H * 0.89, "no bottom");
+    else
+        draw_text(W * 0.05, H * 0.89, bottoms[bottom_choice]);
+
+    if (hat_choice == -1)
+        draw_text(W * 0.05, H * 0.92, "no headpiece");
+    else
+        draw_text(W * 0.05, H * 0.92, hats[hat_choice]);
+
+    if (accessory_choice == -1)
+        draw_text(W * 0.05, H * 0.95, "no accessory");
+    else
+        draw_text(W * 0.05, H * 0.95, accessories[accessory_choice]);
+
+    if (shoes_choice == -1)
+        draw_text(W * 0.05, H * 0.98, "no shoes");
+    else
+        draw_text(W * 0.05, H * 0.98, shoes_list[shoes_choice]);
 
     draw_set_color(bg);
     draw_rectangle(W * 0.30, 0, W, H, false);
@@ -98,7 +115,6 @@ else
     var ox = W * 0.42;
     var bw = (W * 0.48) / 4;
 
-    // SHELVES
     draw_set_color(shelf2);
     draw_rectangle(sx1, H*0.13, sx2, H*0.28, false);
     draw_rectangle(sx1, H*0.27, sx2, H*0.42, false);
@@ -120,7 +136,6 @@ else
     draw_text(sx1 + 20, H*0.525, "Accessories");
     draw_text(sx1 + 20, H*0.665, "Shoes");
 
-    // OPTIONS
     for (var i = 0; i < 4; i += 1)
     {
         var x1 = ox + i * bw + 8;
@@ -141,15 +156,23 @@ else
         draw_text(x1 + 10, H*0.76, shoes_list[i]);
     }
 
-    // selected outlines
     draw_set_color(hotpink);
-    draw_rectangle(ox + top_choice*bw + 8, H*0.18, ox + (top_choice+1)*bw - 8, H*0.25, true);
-    draw_rectangle(ox + bottom_choice*bw + 8, H*0.32, ox + (bottom_choice+1)*bw - 8, H*0.39, true);
-    draw_rectangle(ox + hat_choice*bw + 8, H*0.46, ox + (hat_choice+1)*bw - 8, H*0.53, true);
-    draw_rectangle(ox + accessory_choice*bw + 8, H*0.60, ox + (accessory_choice+1)*bw - 8, H*0.67, true);
-    draw_rectangle(ox + shoes_choice*bw + 8, H*0.74, ox + (shoes_choice+1)*bw - 8, H*0.81, true);
 
-    // bottom buttons
+    if (top_choice != -1)
+        draw_rectangle(ox + top_choice*bw + 8, H*0.18, ox + (top_choice+1)*bw - 8, H*0.25, true);
+
+    if (bottom_choice != -1)
+        draw_rectangle(ox + bottom_choice*bw + 8, H*0.32, ox + (bottom_choice+1)*bw - 8, H*0.39, true);
+
+    if (hat_choice != -1)
+        draw_rectangle(ox + hat_choice*bw + 8, H*0.46, ox + (hat_choice+1)*bw - 8, H*0.53, true);
+
+    if (accessory_choice != -1)
+        draw_rectangle(ox + accessory_choice*bw + 8, H*0.60, ox + (accessory_choice+1)*bw - 8, H*0.67, true);
+
+    if (shoes_choice != -1)
+        draw_rectangle(ox + shoes_choice*bw + 8, H*0.74, ox + (shoes_choice+1)*bw - 8, H*0.81, true);
+
     draw_set_color(purple);
     draw_rectangle(W*0.42, H*0.90, W*0.58, H*0.97, false);
     draw_rectangle(W*0.62, H*0.90, W*0.82, H*0.97, false);

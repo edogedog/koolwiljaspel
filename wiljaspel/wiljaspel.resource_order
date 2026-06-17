@@ -20,5 +20,6 @@
     {"name":"msc_music1","order":3,"path":"sounds/msc_music1/msc_music1.yy",},
     {"name":"snd_bling2","order":1,"path":"sounds/snd_bling2/snd_bling2.yy",},
     {"name":"snd_bling3","order":2,"path":"sounds/snd_bling3/snd_bling3.yy",},
+    {"name":"MIKUBACKUP","order":1,"path":"sprites/MIKUBACKUP/MIKUBACKUP.yy",},
   ],
 }

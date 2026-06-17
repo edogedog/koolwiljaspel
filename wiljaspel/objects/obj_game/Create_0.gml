@@ -5,7 +5,9 @@ global.music = true;
 global.sound = true;
 
 item_themes = ["PARTY", "DINNER", "BEACH", "SCHOOL"];
-theme = item_themes[irandom(3)];
+
+// no prompt at start
+theme = "";
 
 // mixed-up clothing order
 tops = ["bikini", "sparkly", "t-shirt", "blouse"];
@@ -23,11 +25,12 @@ accessories_theme = ["DINNER", "SCHOOL", "PARTY", "BEACH"];
 shoes_list = ["sneakers", "heels", "flipflops", "mary jane"];
 shoes_theme = ["SCHOOL", "PARTY", "BEACH", "DINNER"];
 
-top_choice = 0;
-bottom_choice = 0;
-hat_choice = 0;
-accessory_choice = 0;
-shoes_choice = 0;
+// -1 means nothing is selected
+top_choice = -1;
+bottom_choice = -1;
+hat_choice = -1;
+accessory_choice = -1;
+shoes_choice = -1;
 
 points = 0;
 
