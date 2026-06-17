@@ -19,4 +19,3 @@ shoes = "Sneakers";
 shoes_theme = "School";
 
 points = 0;
-//fuk
