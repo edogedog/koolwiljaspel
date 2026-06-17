@@ -22,3 +22,5 @@ accessory_choice = 0;
 shoes_choice = 0;
 
 points = 0;
+
+audio_play_sound(msc_music1,1,false)

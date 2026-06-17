@@ -31,12 +31,17 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.2.213",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"wiljaspel",
   "resources":[
     {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"alexa_playsfx","path":"scripts/alexa_playsfx/alexa_playsfx.yy",},},
+    {"id":{"name":"msc_music1","path":"sounds/msc_music1/msc_music1.yy",},},
+    {"id":{"name":"snd_bling1","path":"sounds/snd_bling1/snd_bling1.yy",},},
+    {"id":{"name":"snd_bling2","path":"sounds/snd_bling2/snd_bling2.yy",},},
+    {"id":{"name":"snd_bling3","path":"sounds/snd_bling3/snd_bling3.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
