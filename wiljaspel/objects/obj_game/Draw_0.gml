@@ -70,11 +70,26 @@ else
     else
         draw_text(W * 0.05, H * 0.13, "Prompt: " + theme);
 
-    // YOUR MODEL
+    // MODEL + CLOTHES
     var cx = W * 0.15;
-    var cy = H * 0.60;
+    var cy = H * 0.36 + 50;
 
     draw_sprite(spr_model, 0, cx, cy);
+
+    if (bottom_choice != -1)
+        draw_sprite(bottom_sprites[bottom_choice], 0, cx + 12, cy + 120);
+
+    if (top_choice != -1)
+        draw_sprite(top_sprites[top_choice], 0, cx, cy);
+
+    if (shoes_choice != -1)
+        draw_sprite(shoe_sprites[shoes_choice], 0, cx, cy);
+
+    if (hat_choice != -1)
+        draw_sprite(hat_sprites[hat_choice], 0, cx, cy);
+
+    if (accessory_choice != -1)
+        draw_sprite(accessory_sprites[accessory_choice], 0, cx, cy);
 
     draw_set_color(white);
     draw_text(W * 0.05, H * 0.72, "SCORE");
@@ -136,10 +151,12 @@ else
     draw_text(sx1 + 20, H*0.525, "Accessories");
     draw_text(sx1 + 20, H*0.665, "Shoes");
 
+    // CLOTHING SPRITES ON SHELVES
     for (var i = 0; i < 4; i += 1)
     {
         var x1 = ox + i * bw + 8;
         var x2 = ox + (i + 1) * bw - 8;
+        var midx = (x1 + x2) / 2;
 
         draw_set_color(purple);
         draw_rectangle(x1, H*0.18, x2, H*0.25, false);
@@ -148,12 +165,11 @@ else
         draw_rectangle(x1, H*0.60, x2, H*0.67, false);
         draw_rectangle(x1, H*0.74, x2, H*0.81, false);
 
-        draw_set_color(white);
-        draw_text(x1 + 10, H*0.20, tops[i]);
-        draw_text(x1 + 10, H*0.34, bottoms[i]);
-        draw_text(x1 + 10, H*0.48, hats[i]);
-        draw_text(x1 + 10, H*0.62, accessories[i]);
-        draw_text(x1 + 10, H*0.76, shoes_list[i]);
+        draw_sprite_ext(top_sprites[i], 0, midx, H*0.215, 0.35, 0.35, 0, c_white, 1);
+        draw_sprite_ext(bottom_sprites[i], 0, midx, H*0.355, 0.35, 0.35, 0, c_white, 1);
+        draw_sprite_ext(hat_sprites[i], 0, midx, H*0.495, 0.35, 0.35, 0, c_white, 1);
+        draw_sprite_ext(accessory_sprites[i], 0, midx, H*0.635, 0.35, 0.35, 0, c_white, 1);
+        draw_sprite_ext(shoe_sprites[i], 0, midx, H*0.775, 0.35, 0.35, 0, c_white, 1);
     }
 
     draw_set_color(hotpink);
