@@ -77,7 +77,7 @@ else
     draw_sprite(spr_model, 0, cx, cy);
 
     if (bottom_choice != -1)
-        draw_sprite(bottom_sprites[bottom_choice], 0, cx + 12, cy + 120);
+        draw_sprite(bottom_sprites[bottom_choice], 0, cx, cy);
 
     if (top_choice != -1)
         draw_sprite(top_sprites[top_choice], 0, cx, cy);
