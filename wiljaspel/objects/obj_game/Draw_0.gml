@@ -76,19 +76,19 @@ else
     draw_sprite(spr_model, 0, cx, cy);
 
     if (bottom_choice != -1)
-        draw_sprite(bottom_sprites[bottom_choice], 0, cx, cy);
+        draw_sprite(bottom_model_sprites[bottom_choice], 0, cx, cy);
 
     if (top_choice != -1)
-        draw_sprite(top_sprites[top_choice], 0, cx, cy);
+        draw_sprite(top_model_sprites[top_choice], 0, cx, cy);
 
     if (shoes_choice != -1)
-        draw_sprite(shoe_sprites[shoes_choice], 0, cx, cy);
+        draw_sprite(shoe_model_sprites[shoes_choice], 0, cx, cy);
 
     if (hat_choice != -1)
-        draw_sprite(hat_sprites[hat_choice], 0, cx, cy);
+        draw_sprite(hat_model_sprites[hat_choice], 0, cx, cy);
 
     if (accessory_choice != -1)
-        draw_sprite(accessory_sprites[accessory_choice], 0, cx, cy);
+        draw_sprite(accessory_model_sprites[accessory_choice], 0, cx, cy);
 
     draw_set_color(white);
     draw_text(W * 0.05, H * 0.74, "SCORE");
@@ -132,8 +132,8 @@ else
     var hat_x_offset = [0, 0, 0, 0];
     var hat_y_offset = [90, 130, 110, 80];
 
-    var accessory_x_offset = [-70, -70, -70, -70];
-    var accessory_y_offset = [-50, -35, -35, -60];
+    var accessory_x_offset = [-80, -70, -70, -80];
+    var accessory_y_offset = [-45, -35, -35, -60];
 
     var shoe_x_offset = [0, 0, 0, 0];
     var shoe_y_offset = [-150, -145, -150, -145];
@@ -157,11 +157,11 @@ else
         draw_rectangle(x1, H*0.60, x2, H*0.67, false);
         draw_rectangle(x1, H*0.75, x2, H*0.82, false);
 
-        draw_sprite_ext(top_sprites[i], 0, midx + top_x_offset[i], H*0.185 + top_y_offset[i], top_scale, top_scale, 0, c_white, 1);
-        draw_sprite_ext(bottom_sprites[i], 0, midx + bottom_x_offset[i], H*0.335 + bottom_y_offset[i], bottom_scale, bottom_scale, 0, c_white, 1);
-        draw_sprite_ext(hat_sprites[i], 0, midx + hat_x_offset[i], H*0.485 + hat_y_offset[i], hat_scale, hat_scale, 0, c_white, 1);
-        draw_sprite_ext(accessory_sprites[i], 0, midx + accessory_x_offset[i], H*0.635 + accessory_y_offset[i], accessory_scale, accessory_scale, 0, c_white, 1);
-        draw_sprite_ext(shoe_sprites[i], 0, midx + shoe_x_offset[i], H*0.785 + shoe_y_offset[i], shoe_scale, shoe_scale, 0, c_white, 1);
+        draw_sprite_ext(top_button_sprites[i], 0, midx + top_x_offset[i], H*0.185 + top_y_offset[i], top_scale, top_scale, 0, c_white, 1);
+        draw_sprite_ext(bottom_button_sprites[i], 0, midx + bottom_x_offset[i], H*0.335 + bottom_y_offset[i], bottom_scale, bottom_scale, 0, c_white, 1);
+        draw_sprite_ext(hat_button_sprites[i], 0, midx + hat_x_offset[i], H*0.485 + hat_y_offset[i], hat_scale, hat_scale, 0, c_white, 1);
+        draw_sprite_ext(accessory_button_sprites[i], 0, midx + accessory_x_offset[i], H*0.635 + accessory_y_offset[i], accessory_scale, accessory_scale, 0, c_white, 1);
+        draw_sprite_ext(shoe_button_sprites[i], 0, midx + shoe_x_offset[i], H*0.785 + shoe_y_offset[i], shoe_scale, shoe_scale, 0, c_white, 1);
     }
 
     draw_set_color(hotpink);
