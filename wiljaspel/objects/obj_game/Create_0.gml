@@ -24,7 +24,7 @@ shoes_list = ["sneakers", "heels", "flipflops", "mary jane"];
 shoes_theme = ["SCHOOL", "PARTY", "BEACH", "DINNER"];
 
 // button sprites
-top_button_sprites = [spr_bikinitopbutton, spr_sparklytop, spr_tshirt, spr_blouse];
+top_button_sprites = [spr_bikinitopbutton, spr_sparklytop, spr_tshirtbutton, spr_blousebutton];
 bottom_button_sprites = [spr_jeans, spr_sarongbutton, spr_skirt, spr_longskirt];
 hat_button_sprites = [spr_glasses, spr_diadem, spr_flower, spr_earrings];
 accessory_button_sprites = [spr_clutch, spr_book, spr_solocup, spr_beachbag];
