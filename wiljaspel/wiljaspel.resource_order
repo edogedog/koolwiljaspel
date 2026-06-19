@@ -24,6 +24,7 @@
     {"name":"spr_beachbag","order":11,"path":"sprites/spr_beachbag/spr_beachbag.yy",},
     {"name":"spr_bikinitop","order":3,"path":"sprites/spr_bikinitop/spr_bikinitop.yy",},
     {"name":"spr_bikinitopbutton","order":24,"path":"sprites/spr_bikinitopbutton/spr_bikinitopbutton.yy",},
+    {"name":"spr_blouse_1","order":27,"path":"sprites/spr_blouse_1/spr_blouse_1.yy",},
     {"name":"spr_blouse","order":16,"path":"sprites/spr_blouse/spr_blouse.yy",},
     {"name":"spr_book","order":9,"path":"sprites/spr_book/spr_book.yy",},
     {"name":"spr_clutch","order":10,"path":"sprites/spr_clutch/spr_clutch.yy",},
@@ -45,5 +46,6 @@
     {"name":"spr_solocup","order":8,"path":"sprites/spr_solocup/spr_solocup.yy",},
     {"name":"spr_sparklytop","order":12,"path":"sprites/spr_sparklytop/spr_sparklytop.yy",},
     {"name":"spr_tshirt","order":2,"path":"sprites/spr_tshirt/spr_tshirt.yy",},
+    {"name":"spr_tshirtbutton","order":26,"path":"sprites/spr_tshirtbutton/spr_tshirtbutton.yy",},
   ],
 }
