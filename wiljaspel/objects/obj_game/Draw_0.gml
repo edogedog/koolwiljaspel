@@ -131,8 +131,8 @@ else
     var hat_x_offset = [0, 0, 0, 0];
     var hat_y_offset = [90, 130, 110, 80];
 
-    var accessory_x_offset = [-5, 8, 0, 12];
-    var accessory_y_offset = [-45, -45, -40, -60];
+    var accessory_x_offset = [-80, -70, -70, -80];
+    var accessory_y_offset = [-45, -35, -35, -60];
 
     var shoe_x_offset = [0, 0, 0, 0];
     var shoe_y_offset = [-150, -145, -150, -145];

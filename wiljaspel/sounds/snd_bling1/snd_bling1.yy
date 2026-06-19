@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.037551,
+  "duration":5.5440135,
   "exportDir":"",
   "name":"snd_bling1",
   "parent":{
