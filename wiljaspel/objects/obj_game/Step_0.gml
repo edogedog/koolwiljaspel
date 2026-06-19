@@ -1,84 +1,123 @@
-/// @description Insert description here
-// You can write your code in this editor
-if (keyboard_check_pressed(ord("1")))
+var mx = mouse_x;
+var my = mouse_y;
+
+var W = room_width;
+var H = room_height;
+
+if (mouse_check_button_pressed(mb_left))
 {
-    if (top == "T-Shirt")
+    if (game_state == "menu")
     {
-        top = "Sparkly Top";
-        top_theme = "Party";
-    }
-    else
-    {
-        top = "T-Shirt";
-        top_theme = "School";
-    }
-}
+        if (mx > W/2 - 160 && mx < W/2 + 160 && my > H/2 - 40 && my < H/2 + 50)
+        {
+            game_state = "game";
+            if (global.sound) alexa_playsfx(snd_bling1);
+        }
 
-if (keyboard_check_pressed(ord("2")))
-{
-    if (bottom == "Jeans")
-    {
-        bottom = "Fancy Skirt";
-        bottom_theme = "Dinner";
-    }
-    else
-    {
-        bottom = "Jeans";
-        bottom_theme = "School";
-    }
-}
+        if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 100 && my < H/2 + 130)
+        {
+            global.fullscreen = !global.fullscreen;
+            window_set_fullscreen(global.fullscreen);
+        }
 
-if (keyboard_check_pressed(ord("3")))
-{
-    if (head == "Hat")
-    {
-        head = "Tiara";
-        head_theme = "Party";
-    }
-    else
-    {
-        head = "Hat";
-        head_theme = "Beach";
-    }
-}
+        if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 140 && my < H/2 + 170)
+        {
+            global.music = !global.music;
 
-if (keyboard_check_pressed(ord("4")))
-{
-    if (accessory == "Necklace")
-    {
-        accessory = "Glow Bracelet";
-        accessory_theme = "Party";
-    }
-    else
-    {
-        accessory = "Necklace";
-        accessory_theme = "Dinner";
-    }
-}
+            if (global.music)
+                audio_play_sound(msc_music1, 1, true);
+            else
+                audio_stop_sound(msc_music1);
+        }
 
-if (keyboard_check_pressed(ord("5")))
-{
-    if (shoes == "Sneakers")
-    {
-        shoes = "Heels";
-        shoes_theme = "Dinner";
+        if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 180 && my < H/2 + 210)
+        {
+            global.sound = !global.sound;
+        }
     }
-    else
+    else if (game_state == "game")
     {
-        shoes = "Sneakers";
-        shoes_theme = "School";
+        var ox = W * 0.42;
+        var bw = (W * 0.48) / 4;
+
+        // TOP ROW
+        if (my > H*0.15 && my < H*0.22 && mx > ox && mx < ox + bw*4)
+        {
+            top_choice = floor((mx - ox) / bw);
+            if (global.sound) alexa_playsfx(snd_bling3);
+        }
+
+        // BOTTOM ROW
+        if (my > H*0.30 && my < H*0.37 && mx > ox && mx < ox + bw*4)
+        {
+            bottom_choice = floor((mx - ox) / bw);
+            if (global.sound) alexa_playsfx(snd_bling3);
+        }
+
+        // HEAD ROW
+        if (my > H*0.45 && my < H*0.52 && mx > ox && mx < ox + bw*4)
+        {
+            hat_choice = floor((mx - ox) / bw);
+            if (global.sound) alexa_playsfx(snd_bling3);
+        }
+
+        // ACCESSORY ROW
+        if (my > H*0.60 && my < H*0.67 && mx > ox && mx < ox + bw*4)
+        {
+            accessory_choice = floor((mx - ox) / bw);
+            if (global.sound) alexa_playsfx(snd_bling3);
+        }
+
+        // SHOES ROW
+        if (my > H*0.75 && my < H*0.82 && mx > ox && mx < ox + bw*4)
+        {
+            shoes_choice = floor((mx - ox) / bw);
+            if (global.sound) alexa_playsfx(snd_bling3);
+        }
+
+        top_choice = clamp(top_choice, -1, 3);
+        bottom_choice = clamp(bottom_choice, -1, 3);
+        hat_choice = clamp(hat_choice, -1, 3);
+        accessory_choice = clamp(accessory_choice, -1, 3);
+        shoes_choice = clamp(shoes_choice, -1, 3);
+
+        // SCORE
+        if (mx > W*0.42 && mx < W*0.58 && my > H*0.90 && my < H*0.97)
+        {
+            points = 0;
+
+            if (theme != "")
+            {
+                if (top_choice != -1 && tops_theme[top_choice] == theme) points += 1;
+                if (bottom_choice != -1 && bottoms_theme[bottom_choice] == theme) points += 1;
+                if (hat_choice != -1 && hats_theme[hat_choice] == theme) points += 1;
+                if (accessory_choice != -1 && accessories_theme[accessory_choice] == theme) points += 1;
+                if (shoes_choice != -1 && shoes_theme[shoes_choice] == theme) points += 1;
+            }
+
+            if (global.sound) alexa_playsfx(snd_bling1);
+        }
+
+        // NEW PROMPT
+        if (mx > W*0.62 && mx < W*0.82 && my > H*0.90 && my < H*0.97)
+        {
+            theme = item_themes[irandom(3)];
+
+            top_choice = -1;
+            bottom_choice = -1;
+            hat_choice = -1;
+            accessory_choice = -1;
+            shoes_choice = -1;
+
+            points = 0;
+
+            if (global.sound) alexa_playsfx(snd_bling2);
+        }
+
+        // BACK TO MENU
+        if (mx > 20 && mx < 120 && my > 20 && my < 60)
+        {
+            game_state = "menu";
+        }
     }
-}
-
-
-// här e pointsen
-if (keyboard_check_pressed(vk_enter))
-{
-    points = 0;
-
-    if (top_theme == theme) points += 1;
-    if (bottom_theme == theme) points += 1;
-    if (head_theme == theme) points += 1;
-    if (accessory_theme == theme) points += 1;
-    if (shoes_theme == theme) points += 1;
 }

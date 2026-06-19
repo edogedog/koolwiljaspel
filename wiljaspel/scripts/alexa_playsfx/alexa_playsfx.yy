@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"alexa_playsfx",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"alexa_playsfx",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

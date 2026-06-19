@@ -1,22 +1,52 @@
-/// @description Insert description here
-// You can write your code in this editor
-prompts = ["Party", "Dinner", "Beach", "School"];
-theme = prompts[irandom(3)];
+game_state = "menu";
 
-top = "T-Shirt";
-top_theme = "School";
+global.fullscreen = false;
+global.music = true;
+global.sound = true;
 
-bottom = "Jeans";
-bottom_theme = "School";
+item_themes = ["PARTY", "DINNER", "BEACH", "SCHOOL"];
+theme = "";
 
-head = "Hat";
-head_theme = "Beach";
+// clothing names
+tops = ["bikini", "sparkly", "t-shirt", "blouse"];
+tops_theme = ["BEACH", "PARTY", "SCHOOL", "DINNER"];
 
-accessory = "Necklace";
-accessory_theme = "Dinner";
+bottoms = ["jeans", "sarong", "skirt", "long skirt"];
+bottoms_theme = ["SCHOOL", "BEACH", "PARTY", "DINNER"];
 
-shoes = "Sneakers";
-shoes_theme = "School";
+hats = ["glasses", "diadem", "flower", "earrings"];
+hats_theme = ["SCHOOL", "PARTY", "BEACH", "DINNER"];
+
+accessories = ["clutch", "book", "solo cup", "beach bag"];
+accessories_theme = ["DINNER", "SCHOOL", "PARTY", "BEACH"];
+
+shoes_list = ["sneakers", "heels", "flipflops", "mary jane"];
+shoes_theme = ["SCHOOL", "PARTY", "BEACH", "DINNER"];
+
+// button sprites
+top_button_sprites = [spr_bikinitopbutton, spr_sparklytop, spr_tshirt, spr_blouse];
+bottom_button_sprites = [spr_jeans, spr_sarongbutton, spr_skirt, spr_longskirt];
+hat_button_sprites = [spr_glasses, spr_diadem, spr_flower, spr_earrings];
+accessory_button_sprites = [spr_clutch, spr_book, spr_solocup, spr_beachbag];
+shoe_button_sprites = [spr_sneakers, spr_heels, spr_flipflops, spr_maryjane];
+
+// model sprites
+top_model_sprites = [spr_bikinitop, spr_sparklytop, spr_tshirt, spr_blouse];
+bottom_model_sprites = [spr_jeans, spr_sarong, spr_skirt, spr_longskirt];
+hat_model_sprites = [spr_glasses, spr_diadem, spr_flower, spr_earrings];
+accessory_model_sprites = [spr_clutch, spr_book, spr_solocup, spr_beachbag];
+shoe_model_sprites = [spr_sneakers, spr_heels, spr_flipflops, spr_maryjane];
+
+// nothing selected at start
+top_choice = -1;
+bottom_choice = -1;
+hat_choice = -1;
+accessory_choice = -1;
+shoes_choice = -1;
 
 points = 0;
-//fuk
+
+if (global.music)
+{
+    audio_play_sound(msc_music1, 1, true);
+}
