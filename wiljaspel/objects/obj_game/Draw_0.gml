@@ -123,11 +123,19 @@ else
     draw_text(sx1 + 25, H*0.537, "Accessories");
     draw_text(sx1 + 25, H*0.687, "Shoes");
 
-    // EACH ITEM HAS ITS OWN OFFSET NOW
+    var top_x_offset = [0, 0, 0, 0];
     var top_y_offset = [20, 0, 0, 0];
+
+    var bottom_x_offset = [0, 0, 0, 0];
     var bottom_y_offset = [-75, -35, -45, -65];
+
+    var hat_x_offset = [0, 0, 0, 0];
     var hat_y_offset = [90, 130, 110, 80];
-    var accessory_y_offset = [-45, -45, -40, -60];
+
+    var accessory_x_offset = [-70, -70, -70, -70];
+    var accessory_y_offset = [-50, -35, -35, -60];
+
+    var shoe_x_offset = [0, 0, 0, 0];
     var shoe_y_offset = [-150, -145, -150, -145];
 
     var top_scale = 0.75;
@@ -149,11 +157,11 @@ else
         draw_rectangle(x1, H*0.60, x2, H*0.67, false);
         draw_rectangle(x1, H*0.75, x2, H*0.82, false);
 
-        draw_sprite_ext(top_sprites[i], 0, midx, H*0.185 + top_y_offset[i], top_scale, top_scale, 0, c_white, 1);
-        draw_sprite_ext(bottom_sprites[i], 0, midx, H*0.335 + bottom_y_offset[i], bottom_scale, bottom_scale, 0, c_white, 1);
-        draw_sprite_ext(hat_sprites[i], 0, midx, H*0.485 + hat_y_offset[i], hat_scale, hat_scale, 0, c_white, 1);
-        draw_sprite_ext(accessory_sprites[i], 0, midx, H*0.635 + accessory_y_offset[i], accessory_scale, accessory_scale, 0, c_white, 1);
-        draw_sprite_ext(shoe_sprites[i], 0, midx, H*0.785 + shoe_y_offset[i], shoe_scale, shoe_scale, 0, c_white, 1);
+        draw_sprite_ext(top_sprites[i], 0, midx + top_x_offset[i], H*0.185 + top_y_offset[i], top_scale, top_scale, 0, c_white, 1);
+        draw_sprite_ext(bottom_sprites[i], 0, midx + bottom_x_offset[i], H*0.335 + bottom_y_offset[i], bottom_scale, bottom_scale, 0, c_white, 1);
+        draw_sprite_ext(hat_sprites[i], 0, midx + hat_x_offset[i], H*0.485 + hat_y_offset[i], hat_scale, hat_scale, 0, c_white, 1);
+        draw_sprite_ext(accessory_sprites[i], 0, midx + accessory_x_offset[i], H*0.635 + accessory_y_offset[i], accessory_scale, accessory_scale, 0, c_white, 1);
+        draw_sprite_ext(shoe_sprites[i], 0, midx + shoe_x_offset[i], H*0.785 + shoe_y_offset[i], shoe_scale, shoe_scale, 0, c_white, 1);
     }
 
     draw_set_color(hotpink);
