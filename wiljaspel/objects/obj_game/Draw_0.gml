@@ -91,10 +91,66 @@ else if (game_state == "game")
 
     if (accessory_choice != -1)
         draw_sprite(accessory_model_sprites[accessory_choice], 0, cx, cy);
+		draw_set_color(white);
+draw_set_color(white);
+draw_text(W * 0.05, H * 0.70, "FASHION JUDGE");
 
-    draw_set_color(white);
-    draw_text(W * 0.05, H * 0.74, "SCORE");
-    draw_text(W * 0.05, H * 0.78, string(points) + " / 5");
+var live_points = 0;
+var chosen = 0;
+
+if (theme != "")
+{
+    if (top_choice != -1)
+    {
+        chosen += 1;
+        if (tops_theme[top_choice] == theme) live_points += 1;
+    }
+
+    if (bottom_choice != -1)
+    {
+        chosen += 1;
+        if (bottoms_theme[bottom_choice] == theme) live_points += 1;
+    }
+
+    if (hat_choice != -1)
+    {
+        chosen += 1;
+        if (hats_theme[hat_choice] == theme) live_points += 1;
+    }
+
+    if (accessory_choice != -1)
+    {
+        chosen += 1;
+        if (accessories_theme[accessory_choice] == theme) live_points += 1;
+    }
+
+    if (shoes_choice != -1)
+    {
+        chosen += 1;
+        if (shoes_theme[shoes_choice] == theme) live_points += 1;
+    }
+}
+
+if (theme == "")
+{
+    draw_text(W * 0.05, H * 0.75, "\"Press NEW PROMPT first.\"");
+}
+else if (chosen == 0)
+{
+    draw_text(W * 0.05, H * 0.75, "\"Show me your vision.\"");
+}
+else if (live_points == chosen)
+{
+    draw_text(W * 0.05, H * 0.75, "\"Ooh, this matches!\"");
+}
+else if (live_points >= chosen / 2)
+{
+    draw_text(W * 0.05, H * 0.75, "\"Some pieces are working.\"");
+}
+else
+{
+    draw_text(W * 0.05, H * 0.75, "\"Hmm... wrong vibe.\"");
+}
 
     draw_set_color(bg);
     draw_rectangle(W * 0.30, 0, W, H, false);
@@ -197,4 +253,18 @@ else if (game_state == "game")
     draw_set_color(white);
     draw_text(W*0.47, H*0.925, "SCORE");
     draw_text(W*0.67, H*0.925, "NEW PROMPT");
+}
+else if (game_state == "result")
+{
+    draw_set_color(bg);
+    draw_rectangle(0, 0, W, H, false);
+
+    draw_set_color(pink);
+    draw_rectangle(W*0.2, H*0.2, W*0.8, H*0.8, false);
+
+    draw_set_color(white);
+    draw_text(W/2 - 60, H*0.35, score_message);
+    draw_text(W/2 - 40, H*0.45, string(points) + " / 5");
+
+    draw_text(W/2 - 120, H*0.60, "Click anywhere to continue");
 }

@@ -54,8 +54,8 @@ accessory_choice = -1;
 shoes_choice = -1;
 
 points = 0;
+score_message = "";
 
-// prevents music doubling
 if (global.music)
 {
     if (!audio_is_playing(msc_music1))

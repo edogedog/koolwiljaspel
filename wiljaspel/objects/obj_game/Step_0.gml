@@ -108,6 +108,19 @@ if (mouse_check_button_pressed(mb_left))
                 if (shoes_choice != -1 && shoes_theme[shoes_choice] == theme) points += 1;
             }
 
+            if (points == 5)
+                score_message = "PERFECT!";
+            else if (points == 4)
+                score_message = "AMAZING!";
+            else if (points == 3)
+                score_message = "GOOD JOB!";
+            else if (points == 2)
+                score_message = "ALMOST!";
+            else
+                score_message = "FAIL!";
+
+            game_state = "result";
+
             if (global.sound) alexa_playsfx(snd_bling1);
         }
 
@@ -130,5 +143,9 @@ if (mouse_check_button_pressed(mb_left))
         {
             game_state = "menu";
         }
+    }
+    else if (game_state == "result")
+    {
+        game_state = "game";
     }
 }
