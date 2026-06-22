@@ -55,7 +55,7 @@ if (game_state == "menu")
     if (global.music) draw_text(W/2 - 143, H/2 + 145, "X");
     if (global.sound) draw_text(W/2 - 143, H/2 + 185, "X");
 }
-else
+else if (game_state == "game")
 {
     draw_set_color(dark);
     draw_rectangle(0, 0, W * 0.30, H, false);

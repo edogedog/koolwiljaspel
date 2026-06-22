@@ -7,7 +7,6 @@ global.sound = true;
 item_themes = ["PARTY", "DINNER", "BEACH", "SCHOOL"];
 theme = "";
 
-// clothing names
 tops = ["bikini", "sparkly", "t-shirt", "blouse"];
 tops_theme = ["BEACH", "PARTY", "SCHOOL", "DINNER"];
 
@@ -23,21 +22,18 @@ accessories_theme = ["DINNER", "SCHOOL", "PARTY", "BEACH"];
 shoes_list = ["sneakers", "heels", "flipflops", "mary jane"];
 shoes_theme = ["SCHOOL", "PARTY", "BEACH", "DINNER"];
 
-// button sprites
 top_button_sprites = [spr_bikinitopbutton, spr_sparklytop, spr_tshirtbutton, spr_blousebutton];
 bottom_button_sprites = [spr_jeans, spr_sarongbutton, spr_skirt, spr_longskirt];
 hat_button_sprites = [spr_glasses, spr_diadem, spr_flower, spr_earrings];
 accessory_button_sprites = [spr_clutch, spr_book, spr_solocup, spr_beachbag];
 shoe_button_sprites = [spr_sneakers, spr_heels, spr_flipflops, spr_maryjane];
 
-// model sprites
 top_model_sprites = [spr_bikinitop, spr_sparklytop, spr_tshirt, spr_blouse];
 bottom_model_sprites = [spr_jeans, spr_sarong, spr_skirt, spr_longskirt];
 hat_model_sprites = [spr_glasses, spr_diadem, spr_flower, spr_earrings];
 accessory_model_sprites = [spr_clutch, spr_book, spr_solocup, spr_beachbag];
 shoe_model_sprites = [spr_sneakers, spr_heels, spr_flipflops, spr_maryjane];
 
-// nothing selected at start
 top_choice = -1;
 bottom_choice = -1;
 hat_choice = -1;
@@ -49,4 +45,10 @@ points = 0;
 if (global.music)
 {
     audio_play_sound(msc_music1, 1, true);
+}
+
+if (variable_global_exists("skip_menu") && global.skip_menu)
+{
+    game_state = "game";
+    global.skip_menu = false;
 }

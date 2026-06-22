@@ -10,7 +10,7 @@ if (mouse_check_button_pressed(mb_left))
     {
         if (mx > W/2 - 160 && mx < W/2 + 160 && my > H/2 - 40 && my < H/2 + 50)
         {
-            game_state = "game";
+            room_goto(rm_intro);
             if (global.sound) alexa_playsfx(snd_bling1);
         }
 
@@ -40,35 +40,30 @@ if (mouse_check_button_pressed(mb_left))
         var ox = W * 0.42;
         var bw = (W * 0.48) / 4;
 
-        // TOP ROW
         if (my > H*0.15 && my < H*0.22 && mx > ox && mx < ox + bw*4)
         {
             top_choice = floor((mx - ox) / bw);
             if (global.sound) alexa_playsfx(snd_bling3);
         }
 
-        // BOTTOM ROW
         if (my > H*0.30 && my < H*0.37 && mx > ox && mx < ox + bw*4)
         {
             bottom_choice = floor((mx - ox) / bw);
             if (global.sound) alexa_playsfx(snd_bling3);
         }
 
-        // HEAD ROW
         if (my > H*0.45 && my < H*0.52 && mx > ox && mx < ox + bw*4)
         {
             hat_choice = floor((mx - ox) / bw);
             if (global.sound) alexa_playsfx(snd_bling3);
         }
 
-        // ACCESSORY ROW
         if (my > H*0.60 && my < H*0.67 && mx > ox && mx < ox + bw*4)
         {
             accessory_choice = floor((mx - ox) / bw);
             if (global.sound) alexa_playsfx(snd_bling3);
         }
 
-        // SHOES ROW
         if (my > H*0.75 && my < H*0.82 && mx > ox && mx < ox + bw*4)
         {
             shoes_choice = floor((mx - ox) / bw);
@@ -81,7 +76,6 @@ if (mouse_check_button_pressed(mb_left))
         accessory_choice = clamp(accessory_choice, -1, 3);
         shoes_choice = clamp(shoes_choice, -1, 3);
 
-        // SCORE
         if (mx > W*0.42 && mx < W*0.58 && my > H*0.90 && my < H*0.97)
         {
             points = 0;
@@ -98,7 +92,6 @@ if (mouse_check_button_pressed(mb_left))
             if (global.sound) alexa_playsfx(snd_bling1);
         }
 
-        // NEW PROMPT
         if (mx > W*0.62 && mx < W*0.82 && my > H*0.90 && my < H*0.97)
         {
             theme = item_themes[irandom(3)];
@@ -114,7 +107,6 @@ if (mouse_check_button_pressed(mb_left))
             if (global.sound) alexa_playsfx(snd_bling2);
         }
 
-        // BACK TO MENU
         if (mx > 20 && mx < 120 && my > 20 && my < 60)
         {
             game_state = "menu";
