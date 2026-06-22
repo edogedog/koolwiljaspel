@@ -45,15 +45,18 @@ if (game_state == "menu")
     draw_rectangle(W/2 - 150, H/2 + 100, W/2 - 120, H/2 + 130, false);
     draw_rectangle(W/2 - 150, H/2 + 140, W/2 - 120, H/2 + 170, false);
     draw_rectangle(W/2 - 150, H/2 + 180, W/2 - 120, H/2 + 210, false);
+    draw_rectangle(W/2 - 150, H/2 + 220, W/2 - 120, H/2 + 250, false);
 
     draw_set_color(black);
     draw_text(W/2 - 105, H/2 + 108, "Fullscreen");
     draw_text(W/2 - 105, H/2 + 148, "Music");
     draw_text(W/2 - 105, H/2 + 188, "Sound");
+    draw_text(W/2 - 105, H/2 + 228, "Skip Intro");
 
     if (global.fullscreen) draw_text(W/2 - 143, H/2 + 105, "X");
     if (global.music) draw_text(W/2 - 143, H/2 + 145, "X");
     if (global.sound) draw_text(W/2 - 143, H/2 + 185, "X");
+    if (global.skip_intro) draw_text(W/2 - 143, H/2 + 225, "X");
 }
 else if (game_state == "game")
 {

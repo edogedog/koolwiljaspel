@@ -1,8 +1,21 @@
-game_state = "menu";
+if (variable_global_exists("intro_done") && global.intro_done)
+{
+    game_state = "game";
+    global.intro_done = false;
+}
+else
+{
+    game_state = "menu";
+}
 
 global.fullscreen = false;
 global.music = true;
 global.sound = true;
+
+if (!variable_global_exists("skip_intro"))
+{
+    global.skip_intro = false;
+}
 
 item_themes = ["PARTY", "DINNER", "BEACH", "SCHOOL"];
 theme = "";
@@ -42,13 +55,11 @@ shoes_choice = -1;
 
 points = 0;
 
+// prevents music doubling
 if (global.music)
 {
-    audio_play_sound(msc_music1, 1, true);
-}
-
-if (variable_global_exists("skip_menu") && global.skip_menu)
-{
-    game_state = "game";
-    global.skip_menu = false;
+    if (!audio_is_playing(msc_music1))
+    {
+        audio_play_sound(msc_music1, 1, true);
+    }
 }

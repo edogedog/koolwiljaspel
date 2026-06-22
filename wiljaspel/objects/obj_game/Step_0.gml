@@ -10,8 +10,17 @@ if (mouse_check_button_pressed(mb_left))
     {
         if (mx > W/2 - 160 && mx < W/2 + 160 && my > H/2 - 40 && my < H/2 + 50)
         {
-            room_goto(rm_intro);
-            if (global.sound) alexa_playsfx(snd_bling1);
+            if (global.skip_intro)
+            {
+                game_state = "game";
+            }
+            else
+            {
+                room_goto(rm_intro);
+            }
+
+            if (global.sound)
+                alexa_playsfx(snd_bling1);
         }
 
         if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 100 && my < H/2 + 130)
@@ -25,14 +34,24 @@ if (mouse_check_button_pressed(mb_left))
             global.music = !global.music;
 
             if (global.music)
-                audio_play_sound(msc_music1, 1, true);
+            {
+                if (!audio_is_playing(msc_music1))
+                    audio_play_sound(msc_music1, 1, true);
+            }
             else
+            {
                 audio_stop_sound(msc_music1);
+            }
         }
 
         if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 180 && my < H/2 + 210)
         {
             global.sound = !global.sound;
+        }
+
+        if (mx > W/2 - 150 && mx < W/2 - 120 && my > H/2 + 220 && my < H/2 + 250)
+        {
+            global.skip_intro = !global.skip_intro;
         }
     }
     else if (game_state == "game")

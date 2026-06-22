@@ -22,7 +22,7 @@ if (keyboard_check_pressed(vk_enter))
 
         if (dialogue_index >= array_length(dialogue))
         {
-            global.skip_menu = true;
+            global.intro_done = true;
             room_goto(Room1);
         }
         else
