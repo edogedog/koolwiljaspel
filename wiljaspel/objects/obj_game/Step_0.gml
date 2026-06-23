@@ -59,34 +59,59 @@ if (mouse_check_button_pressed(mb_left))
         var ox = W * 0.42;
         var bw = (W * 0.48) / 4;
 
+        // TOPS
         if (my > H*0.15 && my < H*0.22 && mx > ox && mx < ox + bw*4)
         {
             top_choice = floor((mx - ox) / bw);
-            if (global.sound) alexa_playsfx(snd_bling3);
+
+            part_particles_create(part_sys, mx, my, part_type_sparkle, 25);
+
+            if (global.sound)
+                alexa_playsfx(snd_bling3);
         }
 
+        // BOTTOMS
         if (my > H*0.30 && my < H*0.37 && mx > ox && mx < ox + bw*4)
         {
             bottom_choice = floor((mx - ox) / bw);
-            if (global.sound) alexa_playsfx(snd_bling3);
+
+            part_particles_create(part_sys, mx, my, part_type_sparkle, 25);
+
+            if (global.sound)
+                alexa_playsfx(snd_bling3);
         }
 
+        // HATS / HEAD
         if (my > H*0.45 && my < H*0.52 && mx > ox && mx < ox + bw*4)
         {
             hat_choice = floor((mx - ox) / bw);
-            if (global.sound) alexa_playsfx(snd_bling3);
+
+            part_particles_create(part_sys, mx, my, part_type_sparkle, 25);
+
+            if (global.sound)
+                alexa_playsfx(snd_bling3);
         }
 
+        // ACCESSORIES
         if (my > H*0.60 && my < H*0.67 && mx > ox && mx < ox + bw*4)
         {
             accessory_choice = floor((mx - ox) / bw);
-            if (global.sound) alexa_playsfx(snd_bling3);
+
+            part_particles_create(part_sys, mx, my, part_type_sparkle, 25);
+
+            if (global.sound)
+                alexa_playsfx(snd_bling3);
         }
 
+        // SHOES
         if (my > H*0.75 && my < H*0.82 && mx > ox && mx < ox + bw*4)
         {
             shoes_choice = floor((mx - ox) / bw);
-            if (global.sound) alexa_playsfx(snd_bling3);
+
+            part_particles_create(part_sys, mx, my, part_type_sparkle, 25);
+
+            if (global.sound)
+                alexa_playsfx(snd_bling3);
         }
 
         top_choice = clamp(top_choice, -1, 3);
@@ -95,6 +120,7 @@ if (mouse_check_button_pressed(mb_left))
         accessory_choice = clamp(accessory_choice, -1, 3);
         shoes_choice = clamp(shoes_choice, -1, 3);
 
+        // SCORE BUTTON
         if (mx > W*0.42 && mx < W*0.58 && my > H*0.90 && my < H*0.97)
         {
             points = 0;
@@ -121,9 +147,11 @@ if (mouse_check_button_pressed(mb_left))
 
             game_state = "result";
 
-            if (global.sound) alexa_playsfx(snd_bling1);
+            if (global.sound)
+                alexa_playsfx(snd_bling1);
         }
 
+        // NEW PROMPT BUTTON
         if (mx > W*0.62 && mx < W*0.82 && my > H*0.90 && my < H*0.97)
         {
             theme = item_themes[irandom(3)];
@@ -136,9 +164,11 @@ if (mouse_check_button_pressed(mb_left))
 
             points = 0;
 
-            if (global.sound) alexa_playsfx(snd_bling2);
+            if (global.sound)
+                alexa_playsfx(snd_bling2);
         }
 
+        // MENU BUTTON
         if (mx > 20 && mx < 120 && my > 20 && my < 60)
         {
             game_state = "menu";
