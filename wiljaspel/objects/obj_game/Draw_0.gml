@@ -20,9 +20,22 @@ if (game_state == "menu")
     draw_set_color(pink);
     draw_rectangle(W * 0.22, H * 0.18, W * 0.78, H * 0.82, false);
 
-    draw_set_color(white);
-    draw_text(W/2 - 90, H * 0.25, "DRESS UP GAME");
-    draw_text(W/2 - 130, H * 0.31, "make the perfect outfit");
+draw_set_halign(fa_center);
+
+// Bold title font
+draw_set_font(fnt_title);
+draw_set_color(make_color_rgb(255, 80, 180));
+draw_text(W * 0.5, H * 0.25, "MIKU DRESS UP SIMULATOR");
+
+// Normal font for subtitle
+draw_set_font(-1);
+draw_set_color(c_white);
+
+
+draw_set_halign(fa_left);
+ 
+// optional, see below
+
 
     if (mouse_check_button(mb_left)
     && mouse_x > W/2 - 160 && mouse_x < W/2 + 160
