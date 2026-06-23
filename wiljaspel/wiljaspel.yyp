@@ -81,6 +81,8 @@
     {"id":{"name":"spr_teddy","path":"sprites/spr_teddy/spr_teddy.yy",},},
     {"id":{"name":"spr_teddy2","path":"sprites/spr_teddy2/spr_teddy2.yy",},},
     {"id":{"name":"spr_teddy3","path":"sprites/spr_teddy3/spr_teddy3.yy",},},
+    {"id":{"name":"spr_teddy4","path":"sprites/spr_teddy4/spr_teddy4.yy",},},
+    {"id":{"name":"spr_teddy5","path":"sprites/spr_teddy5/spr_teddy5.yy",},},
     {"id":{"name":"spr_tshirt","path":"sprites/spr_tshirt/spr_tshirt.yy",},},
     {"id":{"name":"spr_tshirtbutton","path":"sprites/spr_tshirtbutton/spr_tshirtbutton.yy",},},
   ],

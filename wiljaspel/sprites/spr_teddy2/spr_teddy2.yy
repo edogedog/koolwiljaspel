@@ -23,7 +23,7 @@
   ],
   "name":"spr_teddy2",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"npc",
     "path":"folders/Sprites/npc.yy",
@@ -76,7 +76,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":750,
-    "yorigin":422,
+    "yorigin":400,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

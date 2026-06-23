@@ -57,6 +57,8 @@
     {"name":"spr_sparklytop","order":12,"path":"sprites/spr_sparklytop/spr_sparklytop.yy",},
     {"name":"spr_teddy2","order":1,"path":"sprites/spr_teddy2/spr_teddy2.yy",},
     {"name":"spr_teddy3","order":2,"path":"sprites/spr_teddy3/spr_teddy3.yy",},
+    {"name":"spr_teddy4","order":3,"path":"sprites/spr_teddy4/spr_teddy4.yy",},
+    {"name":"spr_teddy5","order":4,"path":"sprites/spr_teddy5/spr_teddy5.yy",},
     {"name":"spr_tshirt","order":2,"path":"sprites/spr_tshirt/spr_tshirt.yy",},
     {"name":"spr_tshirtbutton","order":26,"path":"sprites/spr_tshirtbutton/spr_tshirtbutton.yy",},
   ],
