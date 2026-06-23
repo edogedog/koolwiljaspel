@@ -60,13 +60,42 @@ if (game_state == "menu")
 }
 else if (game_state == "game")
 {
+    // LEFT PANEL
     draw_set_color(dark);
     draw_rectangle(0, 0, W * 0.30, H, false);
 
+    // BIG THEME BACKGROUND BEHIND MODEL
+    var bg_sprite = -1;
+
+    switch (theme)
+    {
+        case "PARTY":
+            bg_sprite = spr_bg_party_img;
+        break;
+
+        case "DINNER":
+            bg_sprite = spr_bg_dinner_img;
+        break;
+
+        case "BEACH":
+            bg_sprite = spr_bg_beach_img;
+        break;
+
+        case "SCHOOL":
+            bg_sprite = spr_bg_school_img;
+        break;
+    }
+
+    if (bg_sprite != -1)
+    {
+        draw_sprite_stretched(bg_sprite, 0, 0, 0, W * 0.30, H);
+    }
+
+    // MENU BUTTON
     draw_set_color(white);
     draw_text(30, 25, "< MENU");
-   
 
+    // SMALL PROMPT SPRITE ABOVE MODEL
     if (theme == "")
     {
         draw_text(W * 0.05, H * 0.13, "Click NEW PROMPT");
@@ -96,10 +125,11 @@ else if (game_state == "game")
 
         if (prompt_sprite != -1)
         {
-          draw_sprite_ext(prompt_sprite, 0, W * 0.15, H * 0.10, 0.45, 0.45, 0, c_white, 1);
+            draw_sprite_ext(prompt_sprite, 0, W * 0.15, H * 0.10, 0.45, 0.45, 0, c_white, 1);
         }
     }
 
+    // MODEL
     var cx = W * 0.15;
     var cy = H * 0.36 + 70;
 
@@ -120,44 +150,73 @@ else if (game_state == "game")
     if (accessory_choice != -1)
         draw_sprite(accessory_model_sprites[accessory_choice], 0, cx, cy);
 
-    draw_set_color(white);
-    draw_text(W * 0.05, H * 0.70, "FASHION JUDGE");
+ // JUDGE
+var live_points = 0;
+var chosen = 0;
 
-    var live_points = 0;
-    var chosen = 0;
-
-    if (theme != "")
+if (theme != "")
+{
+    if (top_choice != -1)
     {
-        if (top_choice != -1)
-        {
-            chosen += 1;
-            if (tops_theme[top_choice] == theme) live_points += 1;
-        }
-
-        if (bottom_choice != -1)
-        {
-            chosen += 1;
-            if (bottoms_theme[bottom_choice] == theme) live_points += 1;
-        }
-
-        if (hat_choice != -1)
-        {
-            chosen += 1;
-            if (hats_theme[hat_choice] == theme) live_points += 1;
-        }
-
-        if (accessory_choice != -1)
-        {
-            chosen += 1;
-            if (accessories_theme[accessory_choice] == theme) live_points += 1;
-        }
-
-        if (shoes_choice != -1)
-        {
-            chosen += 1;
-            if (shoes_theme[shoes_choice] == theme) live_points += 1;
-        }
+        chosen += 1;
+        if (tops_theme[top_choice] == theme) live_points += 1;
     }
+
+    if (bottom_choice != -1)
+    {
+        chosen += 1;
+        if (bottoms_theme[bottom_choice] == theme) live_points += 1;
+    }
+
+    if (hat_choice != -1)
+    {
+        chosen += 1;
+        if (hats_theme[hat_choice] == theme) live_points += 1;
+    }
+
+    if (accessory_choice != -1)
+    {
+        chosen += 1;
+        if (accessories_theme[accessory_choice] == theme) live_points += 1;
+    }
+
+    if (shoes_choice != -1)
+    {
+        chosen += 1;
+        if (shoes_theme[shoes_choice] == theme) live_points += 1;
+    }
+}
+
+// TEDDY ICON
+var judge_sprite = -1;
+
+if (theme != "" && chosen > 0)
+{
+    if (live_points == chosen)
+        judge_sprite = spr_teddy_heart;
+    else if (live_points >= chosen / 2)
+        judge_sprite = spr_teddy_smug;
+    else
+        judge_sprite = spr_teddy_dissapointed;
+}
+
+if (judge_sprite != -1)
+{
+    draw_sprite_ext(
+        judge_sprite,
+        0,
+        W * 0.03,
+        H * 0.73,
+        0.4,
+        0.4,
+        0,
+        c_white,
+        1
+    );
+}
+
+draw_set_color(white);
+draw_text(W * 0.08, H * 0.70, "FASHION JUDGE");
 
     if (theme == "")
     {
@@ -180,6 +239,7 @@ else if (game_state == "game")
         draw_text(W * 0.05, H * 0.75, "\"Hmm... wrong vibe.\"");
     }
 
+    // RIGHT SIDE BACKGROUND
     draw_set_color(bg);
     draw_rectangle(W * 0.30, 0, W, H, false);
 
