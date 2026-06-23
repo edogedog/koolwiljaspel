@@ -65,12 +65,40 @@ else if (game_state == "game")
 
     draw_set_color(white);
     draw_text(30, 25, "< MENU");
-    draw_text(W * 0.05, H * 0.08, "MODEL");
+   
 
     if (theme == "")
+    {
         draw_text(W * 0.05, H * 0.13, "Click NEW PROMPT");
+    }
     else
-        draw_text(W * 0.05, H * 0.13, "Prompt: " + theme);
+    {
+        var prompt_sprite = -1;
+
+        switch (theme)
+        {
+            case "PARTY":
+                prompt_sprite = spr_bg_party;
+            break;
+
+            case "DINNER":
+                prompt_sprite = spr_bg_dinner;
+            break;
+
+            case "BEACH":
+                prompt_sprite = spr_bg_beach;
+            break;
+
+            case "SCHOOL":
+                prompt_sprite = spr_bg_school;
+            break;
+        }
+
+        if (prompt_sprite != -1)
+        {
+          draw_sprite_ext(prompt_sprite, 0, W * 0.15, H * 0.10, 0.45, 0.45, 0, c_white, 1);
+        }
+    }
 
     var cx = W * 0.15;
     var cy = H * 0.36 + 70;
@@ -91,66 +119,66 @@ else if (game_state == "game")
 
     if (accessory_choice != -1)
         draw_sprite(accessory_model_sprites[accessory_choice], 0, cx, cy);
-		draw_set_color(white);
-draw_set_color(white);
-draw_text(W * 0.05, H * 0.70, "FASHION JUDGE");
 
-var live_points = 0;
-var chosen = 0;
+    draw_set_color(white);
+    draw_text(W * 0.05, H * 0.70, "FASHION JUDGE");
 
-if (theme != "")
-{
-    if (top_choice != -1)
+    var live_points = 0;
+    var chosen = 0;
+
+    if (theme != "")
     {
-        chosen += 1;
-        if (tops_theme[top_choice] == theme) live_points += 1;
+        if (top_choice != -1)
+        {
+            chosen += 1;
+            if (tops_theme[top_choice] == theme) live_points += 1;
+        }
+
+        if (bottom_choice != -1)
+        {
+            chosen += 1;
+            if (bottoms_theme[bottom_choice] == theme) live_points += 1;
+        }
+
+        if (hat_choice != -1)
+        {
+            chosen += 1;
+            if (hats_theme[hat_choice] == theme) live_points += 1;
+        }
+
+        if (accessory_choice != -1)
+        {
+            chosen += 1;
+            if (accessories_theme[accessory_choice] == theme) live_points += 1;
+        }
+
+        if (shoes_choice != -1)
+        {
+            chosen += 1;
+            if (shoes_theme[shoes_choice] == theme) live_points += 1;
+        }
     }
 
-    if (bottom_choice != -1)
+    if (theme == "")
     {
-        chosen += 1;
-        if (bottoms_theme[bottom_choice] == theme) live_points += 1;
+        draw_text(W * 0.05, H * 0.75, "\"Press NEW PROMPT first.\"");
     }
-
-    if (hat_choice != -1)
+    else if (chosen == 0)
     {
-        chosen += 1;
-        if (hats_theme[hat_choice] == theme) live_points += 1;
+        draw_text(W * 0.05, H * 0.75, "\"Show me your vision.\"");
     }
-
-    if (accessory_choice != -1)
+    else if (live_points == chosen)
     {
-        chosen += 1;
-        if (accessories_theme[accessory_choice] == theme) live_points += 1;
+        draw_text(W * 0.05, H * 0.75, "\"Ooh, this matches!\"");
     }
-
-    if (shoes_choice != -1)
+    else if (live_points >= chosen / 2)
     {
-        chosen += 1;
-        if (shoes_theme[shoes_choice] == theme) live_points += 1;
+        draw_text(W * 0.05, H * 0.75, "\"Some pieces are working.\"");
     }
-}
-
-if (theme == "")
-{
-    draw_text(W * 0.05, H * 0.75, "\"Press NEW PROMPT first.\"");
-}
-else if (chosen == 0)
-{
-    draw_text(W * 0.05, H * 0.75, "\"Show me your vision.\"");
-}
-else if (live_points == chosen)
-{
-    draw_text(W * 0.05, H * 0.75, "\"Ooh, this matches!\"");
-}
-else if (live_points >= chosen / 2)
-{
-    draw_text(W * 0.05, H * 0.75, "\"Some pieces are working.\"");
-}
-else
-{
-    draw_text(W * 0.05, H * 0.75, "\"Hmm... wrong vibe.\"");
-}
+    else
+    {
+        draw_text(W * 0.05, H * 0.75, "\"Hmm... wrong vibe.\"");
+    }
 
     draw_set_color(bg);
     draw_rectangle(W * 0.30, 0, W, H, false);
