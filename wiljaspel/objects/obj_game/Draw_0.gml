@@ -356,3 +356,4 @@ else if (game_state == "result")
 
     draw_text(W/2 - 120, H*0.60, "Click anywhere to continue");
 }
+part_system_drawit(part_sys);

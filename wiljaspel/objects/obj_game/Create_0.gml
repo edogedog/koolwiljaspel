@@ -63,3 +63,26 @@ if (global.music)
         audio_play_sound(msc_music1, 1, true);
     }
 }
+
+part_sys = part_system_create();
+
+part_type_sparkle = part_type_create();
+
+part_type_shape(part_type_sparkle, pt_shape_star);
+
+part_type_size(part_type_sparkle, 0.1, 0.4, 0, 0);
+
+part_type_alpha2(part_type_sparkle, 1, 0);
+
+part_type_speed(part_type_sparkle, 0.5, 2, 0, 0);
+
+part_type_direction(part_type_sparkle, 0, 360, 0, 0);
+
+part_type_life(part_type_sparkle, 20, 35);
+
+part_type_colour3(
+    part_type_sparkle,
+    c_white,
+    make_color_rgb(255,220,120),
+    c_white
+);

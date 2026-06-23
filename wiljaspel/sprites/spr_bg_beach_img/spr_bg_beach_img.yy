@@ -19,7 +19,7 @@
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"fe6c69be-7e27-4a27-a311-7398971855d8","blendMode":0,"displayName":"default","isLocked":false,"name":"fe6c69be-7e27-4a27-a311-7398971855d8","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"fe6c69be-7e27-4a27-a311-7398971855d8","blendMode":0,"displayName":"default","isLocked":false,"name":"fe6c69be-7e27-4a27-a311-7398971855d8","opacity":62.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_bg_beach_img",
   "nineSlice":null,

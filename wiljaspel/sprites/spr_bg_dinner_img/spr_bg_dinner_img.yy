@@ -19,7 +19,7 @@
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"c8b5aa02-9c0c-4f57-8ace-4025c7f4c666","blendMode":0,"displayName":"default","isLocked":false,"name":"c8b5aa02-9c0c-4f57-8ace-4025c7f4c666","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"c8b5aa02-9c0c-4f57-8ace-4025c7f4c666","blendMode":0,"displayName":"default","isLocked":false,"name":"c8b5aa02-9c0c-4f57-8ace-4025c7f4c666","opacity":62.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_bg_dinner_img",
   "nineSlice":null,

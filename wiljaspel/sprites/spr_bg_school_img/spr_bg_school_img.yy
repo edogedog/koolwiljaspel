@@ -19,7 +19,7 @@
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"98fdb0ef-3d36-4ff6-98e5-ad5b54e24d59","blendMode":0,"displayName":"default","isLocked":false,"name":"98fdb0ef-3d36-4ff6-98e5-ad5b54e24d59","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"98fdb0ef-3d36-4ff6-98e5-ad5b54e24d59","blendMode":0,"displayName":"default","isLocked":false,"name":"98fdb0ef-3d36-4ff6-98e5-ad5b54e24d59","opacity":62.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_bg_school_img",
   "nineSlice":null,
