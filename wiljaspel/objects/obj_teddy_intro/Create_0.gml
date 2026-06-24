@@ -24,12 +24,13 @@ lines = [
 
     { text: "* Really? Thank you!", sprite: spr_teddy2, next: 9 },
     { text: "* Then let's make the best outfit ever.", sprite: spr_teddy, next: 10 },
-    { text: "* Good luck!", sprite: spr_teddy2, next: -1 },
+    { text: "* Press the prompt button to get a theme then choose your fit, good luck!", sprite: spr_teddy2, next: -1 },
 
     { text: "", sprite: spr_teddy3, bad_end: true }
 ];
 
 line = 0;
+
 text_pos = 0;
 text_speed = 0.6;
 finished_line = false;
@@ -37,9 +38,9 @@ finished_line = false;
 choice_mode = false;
 choice_selected = 0;
 
-bad_end_mode = false;
-bad_end_timer = 0;
-
 talk_sounds = [snd_teddy_talk, snd_teddy_talk2, snd_teddy_talk3];
 last_char_played = 0;
 talk_sound_delay = 3;
+
+bad_end_mode = false;
+bad_end_timer = 0;

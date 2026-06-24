@@ -18,7 +18,7 @@ draw_rectangle(0, 0, W, H, false);
 if (game_state == "menu")
 {
     draw_set_color(pink);
-    draw_rectangle(W * 0.22, H * 0.18, W * 0.78, H * 0.82, false);
+    draw_rectangle(W * 0.22, H * 0.18, W * 0.78, H * 0.85, false);
 
 draw_set_halign(fa_center);
 
